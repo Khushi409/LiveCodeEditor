@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <title>Code Editor</title>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/e6b8371d90.js" crossorigin="anonymous"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <section id="header">
+        <div class="left">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhS-n_ZWNBfsSAQh5hiCrdljQUgYx7mwhu-XyWVkNrHoEQLKqF-mQ3G98hIuh9SzFsPws&usqp=CAU" alt="logo">
+            <div class="project-details">
+                <h4 class="title">Untitled <i class="fa-solid fa-pen-to-square"></i></h4>
+                <p>Khushi Verma</p>
+            </div>
+        </div>
+        <div class="right">
+            <ul>
+                <li class="save"><a href="#"><i class="fa-solid fa-cloud"></i> Save</a></li>
+                <li class="settings"><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                <li class="view"><a href="#"><i class="fa-solid fa-object-group"></i></a></li>
+                <li class="submenu" onclick="openmenu()"><a href="#"><i class="fa-solid fa-square-caret-down"></i></a>
+                </li>
+                <li><a href="signup.html" class="signup">Sign Up</a></li>
+                <li><a href="login.html">Log In</a></li>
+            </ul>
+        </div>
+
+        <!-- For Mobile Sub-Menu -->
+        <ul class="mobile-menu" id="side-menu">
+            <li class="save"><a href="#"><i class="fa-solid fa-cloud"></i> Save</a></li>
+            <li class="settings"><a href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <i class="fa-solid fa-xmark close" onclick="closemenu()"></i>
+        </ul>
+    </section>
+    <section id="main-section">
+        <div class="input-section">
+            <div class="html-field">
+                <h3><i id="html" class="fa-brands fa-html5"></i> HTML</h3>
+                <textarea id="html-input" onkeyup="run()"></textarea>
+            </div>
+            <div class="css-field">
+                <h3 ><i id="css" class="fa-brands fa-css3-alt"></i> CSS</h3>
+                <textarea id="css-input" onkeyup="run()"></textarea>
+            </div>
+            <div class="js-field">
+                <h3><i id="js" class="fa-brands fa-js"></i> JS</h3>
+                <textarea id="js-input" onkeyup="run()"></textarea>
+            </div>
+        </div>
+        <div class="output-section">
+            <div class="output-field">
+                <iframe id="output"></iframe>
+            </div>
+        </div>
+    
+</div>
+<div class="info" align="center">
+  <p class="infotext">Made with ❤️ by Khushi Verma</p>
+  <a class="linkbtn" href="https://www.linkedin.com/in/khushi-verma-6b95081b9/" target='_blank' role="button"><i
+      class="icon fa-brands fa-linkedin fa-2x"></i></a>
+  <a class="linkbtn" href="https://github.com/Khushi409/Portfolio.git" target='_blank' role="button"><i
+      class="icon fa-brands fa-github fa-2x"></i></a>
+      <br>
+      <br>
+  <p>Copyright © 2023. Khushi Verma. All rights reserved.</p>
+</div>
+</body>
+
+<script>
+    function run() {
+        let htmlcode = document.getElementById("html-input").value;
+        let csscode = document.getElementById("css-input").value;
+        let jscode = document.getElementById("js-input").value;
+        let output = document.getElementById("output");
+
+        output.contentDocument.body.innerHTML = htmlcode + "<style>" + csscode + "</style>";
+        output.contentWindow.eval(jscode);
+    }
+</script>
+
+<script>
+    var sidemenu = document.getElementById("side-menu");
+
+    function openmenu() {
+        sidemenu.style.right = "75px";
+    }
+    function closemenu() {
+        sidemenu.style.right = "-400px";
+    }
+</script>
+
+</html>
